@@ -1,0 +1,42 @@
+{
+  "name": "accessibility-audit-framework",
+  "version": "1.0.0",
+  "description": "accessibility-audit-framework repository",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/myzticalbabe/accessibility-audit-framework.git"
+  },
+  "homepage": "https://github.com/myzticalbabe/accessibility-audit-framework",
+  "bugs": {
+    "url": "https://github.com/myzticalbabe/accessibility-audit-framework/issues"
+  },
+  "license": "MIT",
+  "author": "accessibility-audit-framework Contributors",
+  "maintainers": [
+    {
+      "name": "myzticalbabe",
+      "email": "maintainers@myzticalbabe.com",
+      "web": "https://github.com/myzticalbabe"
+    }
+  ],
+  "keywords": [
+    "stem",
+    "education",
+    "open-source"
+  ],
+  "categories": [
+    "education",
+    "stem"
+  ],
+  "support": {
+    "documentation": "https://github.com/myzticalbabe/accessibility-audit-framework/wiki",
+    "discussions": "https://github.com/myzticalbabe/accessibility-audit-framework/discussions",
+    "security": "https://github.com/myzticalbabe/accessibility-audit-framework/security/advisories"
+  },
+  "governance": {
+    "code_of_conduct": "CODE_OF_CONDUCT.md",
+    "contributing": "CONTRIBUTING.md",
+    "security_policy": "SECURITY.md",
+    "disclosure_policy": "DISCLOSURE_POLICY.md"
+  }
+}

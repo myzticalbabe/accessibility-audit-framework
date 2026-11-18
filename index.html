@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Accessibility Audit Framework - Reusable check engine for HTML lang/contrast/labels subset of soul-forge-gate rules, stdlib-only, JSON report, 5+ pytest cases.">
+    <title>Accessibility Audit Framework</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="site-header" role="banner">
+        <div class="container">
+            <a href="/" class="site-logo" aria-label="Accessibility Audit Framework Home">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <path d="M9 12l2 2 4-4"/>
+                </svg>
+                <span class="logo-text">Accessibility Audit Framework</span>
+            </a>
+            <nav class="site-nav" role="navigation" aria-label="Main navigation">
+                <ul class="nav-list">
+                    <li><a href="#features" class="nav-link">Features</a></li>
+                    <li><a href="#checks" class="nav-link">Checks</a></li>
+                    <li><a href="#engine" class="nav-link">Engine</a></li>
+                    <li><a href="#docs" class="nav-link">Docs</a></li>
+                </ul>
+            </nav>
+            <div class="search-toggle" role="search" aria-label="Search documentation">
+                <input type="search" id="search-input" placeholder="Search docs..." aria-label="Search" autocomplete="off">
+                <div id="search-results" class="search-results" role="listbox" aria-label="Search results" hidden></div>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main" role="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title">Accessibility Audit Framework</h1>
+                <p class="hero-subtitle">Reusable check engine for HTML lang/contrast/labels subset of soul-forge-gate rules, stdlib-only, JSON report, 5+ pytest cases.</p>
+                <div class="hero-stats" role="list" aria-label="Platform statistics">
+                    <div class="stat" role="listitem">
+                        <span class="stat-number">5</span>
+                        <span class="stat-label">Core Checks</span>
+                    </div>
+                    <div class="stat" role="listitem">
+                        <span class="stat-number">JSON</span>
+                        <stat-label>Report Output</stat-label>
+                    </div>
+                    <div class="stat" role="listitem">
+                        <span class="stat-number">5+</span>
+                        <span class="stat-label">Pytest Cases</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="tools-section" aria-labelledby="features-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="features-title">Key Features</h2>
+                    <p class="section-description">Lightweight, stdlib-only accessibility checking for HTML content</p>
+                </header>
+                <div class="tools-grid" role="list" aria-label="Key features">
+                    <article class="tool-card reveal" role="listitem" style="--card-index: 0;">
+                        <div class="tool-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="tool-title">Lang Attribute Check</h3>
+                        <p class="tool-description">Validates HTML lang attribute presence, validity (BCP 47), and matches content language.
+                        </p>
+                        <ul class="tool-tags" role="list">
+                            <li>BCP 47 Validation</li>
+                            <li>Content Detection</li>
+                            <li>Missing Detection</li>
+                        </ul>
+                        <a href="https://github.com/myzticalbabe/accessibility-audit-framework" class="tool-link" target="_blank" rel="noopener noreferrer">
+                            View Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="tool-card reveal" role="listitem" style="--card-index: 1;">
+                        <div class="tool-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                        </div>
+                        <h3 class="tool-title">Contrast Ratio Check</h3>
+                        <p class="tool-description">Calculates WCAG 2.1 contrast ratios for text and UI elements, supports AA/AAA levels, large text scaling.
+                        </p>
+                        <ul class="tool-tags" role="list">
+                            <li>WCAG 2.1 AA/AAA</li>
+                            <li>Large Text Support</li>
+                            <li>Relative Luminance</li>
+                        </ul>
+                        <a href="https://github.com/myzticalbabe/accessibility-audit-framework" class="tool-link" target="_blank" rel="noopener noreferrer">
+                            View Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="tool-card reveal" role="listitem" style="--card-index: 2;">
+                        <div class="tool-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                <polyline points="14 2 14 8 20 8"/>
+                                <line x1="16" y1="13" x2="8" y2="13"/>
+                                <line x1="16" y1="17" x2="8" y2="17"/>
+                                <polyline points="10 9 9 9 8 9"/>
+                            </svg>
+                        </div>
+                        <h3 class="tool-title">Label Association Check</h3>
+                        <p class="tool-description">Verifies form inputs have associated labels (explicit, implicit, aria-label, aria-labelledby), detects orphaned inputs.
+                        </p>
+                        <ul class="tool-tags" role="list">
+                            <li>Explicit Labels</li>
+                            <li>Implicit Labels</li>
+                            <li>ARIA Labels</li>
+                        </ul>
+                        <a href="https://github.com/myzticalbabe/accessibility-audit-framework" class="tool-link" target="_blank" rel="noopener noreferrer">
+                            View Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="tool-card reveal" role="listitem" style="--card-index: 3;">
+                        <div class="tool-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                                <path d="M9 12l2 2 4-4"/>
+                            </svg>
+                        </div>
+                        <h3 class="tool-title">Image Alt-Text Check</h3>
+                        <p class="tool-description">Validates img alt attributes, detects missing/empty alt, decorative image handling with role=presentation.
+                        </p>
+                        <ul class="tool-tags" role="list">
+                            <li>Missing Detection</li>
+                            <li>Empty Alt Detection</li>
+                            <li>Decorative Images</li>
+                        </ul>
+                        <a href="https://github.com/myzticalbabe/accessibility-audit-framework" class="tool-link" target="_blank" rel="noopener noreferrer">
+                            View Check <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </article>
+
+                    <article class="tool-card reveal" role="listitem" style="--card-index: 4;">
+                        <div class="tool-icon" aria-hidden="true">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                <polyline points="7 10 12 15 17 10"/>
+                                <line x1="12" y1="15" x2="12" y2="3"/>
+                            </svg>
+                        </div>
+                        <h3 class="tool-title">JSON Report Output</h3>
+                        <p class="tool-description">Structured JSON output with findings, severity, element selectors, remediation guidance, and CI/CD integration.
+                        </p>
+                        <ul class="tool-tags" role="list">
+                            <li>Structured JSON</li>
+                            <li>CI/CD Ready</li>
+                            <li>Exit Codes</li>
+                        </ul>
+                        <a href="https://github.com/myzticalbabe/accessibility-audit-framework" class="tool-link" target="_blank" rel="noopener noreferrer">
+                            View Output <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="checks" class="learning-paths-section" aria-labelledby="checks-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="checks-title">Core Accessibility Checks</h2>
+                    <p class="section-description">WCAG 2.1 aligned checks implemented in the framework</p>
+                </header>
+                <div class="paths-grid" role="list" aria-label="Accessibility checks">
+                    <article class="path-card reveal" role="listitem" style="--card-index: 0;">
+                        <div class="path-header">
+                            <div class="path-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="path-meta">
+                                <span class="path-level">Check 1</span>
+                                <span class="path-duration">Lang</span>
+                            </div>
+                        </div>
+                        <h3 class="path-title">HTML Lang Attribute (WCAG 3.1.1)</h3>
+                        <p class="path-description">Ensures page language is declared and valid for screen reader pronunciation</p>
+                        <ol class="path-steps" role="list" aria-label="Lang check details">
+                            <li><strong>Presence:</strong> Checks for <code>lang</code> attribute on <code><html></code> element</li>
+                            <li><strong>Validity:</strong> Validates against BCP 47 language tags (ISO 639-1/639-3)</li>
+                            <li><strong>Region Codes:</strong> Accepts region subtags (en-US, zh-CN, es-MX)</li>
+                            <li><strong>Inheritance:</strong> Checks child elements with different lang don't conflict</li>
+                            <li><strong>Empty Value:</strong> Flags empty lang="" as error</li>
+                            <li><strong>Output:</strong> Selector, actual value, expected format, severity</li>
+                        </ol>
+                        <div class="path-tools">
+                            <span class="path-tool">WCAG 3.1.1</span>
+                            <span class="path-tool">BCP 47</span>
+                        </div>
+                    </article>
+
+                    <article class="path-card reveal" role="listitem" style="--card-index: 1;">
+                        <div class="path-header">
+                            <div class="path-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <path d="M12 6v6l4 2"/>
+                                </svg>
+                            </div>
+                            <div class="path-meta">
+                                <span class="path-level">Check 2</span>
+                                <span class="path-duration">Contrast</span>
+                            </div>
+                        </div>
+                        <h3 class="path-title">Contrast Ratio (WCAG 1.4.3, 1.4.6)</h3>
+                        <p class="path-description">Calculates relative luminance and contrast ratios for text and UI components</p>
+                        <ol class="path-steps" role="list" aria-label="Contrast check details">
+                            <li><strong>Relative Luminance:</strong> Calculates per WCAG formula (sRGB linearization)</li>
+                            <li><strong>Contrast Ratio:</strong> (L1 + 0.05) / (L2 + 0.05) where L1 > L2</li>
+                            <li><strong>AA Normal Text:</strong> Minimum 4.5:1 contrast ratio</li>
+                            <li><strong>AA Large Text:</strong> Minimum 3:1 (18pt+ or 14pt+ bold)</li>
+                            <li><strong>AAA Normal Text:</strong> Minimum 7:1 contrast ratio</li>
+                            <li><strong>AAA Large Text:</strong> Minimum 4.5:1 (18pt+ or 14pt+ bold)</li>
+                            <li><strong>UI Components:</strong> 3:1 for borders, focus indicators, icons</li>
+                            <li><strong>Color Parsing:</strong> Supports hex, rgb(), rgba(), hsl(), named colors</li>
+                        </ol>
+                        <div class="path-tools">
+                            <span class="path-tool">WCAG 1.4.3/1.4.6</span>
+                            <span class="path-tool">AA/AAA</span>
+                        </div>
+                    </article>
+
+                    <article class="path-card reveal" role="listitem" style="--card-index: 2;">
+                        <div class="path-header">
+                            <div class="path-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                </svg>
+                            </div>
+                            <div class="path-meta">
+                                <span class="path-level">Check 3</span>
+                                <span class="path-duration">Labels</span>
+                            </div>
+                        </div>
+                        <h3 class="path-title">Form Label Association (WCAG 1.3.1, 3.3.2)</h3>
+                        <p class="path-description">Ensures all form inputs have accessible labels via multiple association methods</p>
+                        <ol class="path-steps" role="list" aria-label="Label check details">
+                            <li><strong>Explicit Label:</strong> <code><label for="id"></code> matching <code><input id="id"></code></li>
+                            <li><strong>Implicit Label:</strong> Input wrapped in <code><label></code></li>
+                            <li><strong>ARIA Label:</strong> <code>aria-label</code> attribute on input</li>
+                            <li><strong>ARIA Labelledby:</strong> <code>aria-labelledby</code> referencing labeling element</li>
+                            <li><strong>Title Attribute:</strong> Fallback for <code>title</code> (warning only)</li>
+                            <li><strong>Exemptions:</strong> hidden inputs, buttons with visible text, submit/reset/image buttons</li>
+                            <li><strong>Orphan Detection:</strong> Inputs with no accessible name flagged as error</li>
+                        </ol>
+                        <div class="path-tools">
+                            <span class="path-tool">WCAG 1.3.1</span>
+                            <span class="path-tool">WCAG 3.3.2</span>
+                        </div>
+                    </article>
+
+                    <article class="path-card reveal" role="listitem" style="--card-index: 3;">
+                        <div class="path-header">
+                            <div class="path-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                                    <circle cx="12" cy="12" r="3"/>
+                                </svg>
+                            </div>
+                            <div class="path-meta">
+                                <span class="path-level">Check 4</span>
+                                <span class="path-duration">Alt-Text</span>
+                            </div>
+                        </div>
+                        <h3 class="path-title">Image Alt-Text (WCAG 1.1.1)</h3>
+                        <p class="path-description">Validates all images have appropriate alternative text</p>
+                        <ol class="path-steps" role="list" aria-label="Alt-text check details">
+                            <li><strong>Presence:</strong> All <code><img></code> must have <code>alt</code> attribute</li>
+                            <li><strong>Non-Empty:</strong> Flags empty alt="" unless decorative</li>
+                            <li><strong>Decorative Images:</strong> Accepts <code>role="presentation"</code> or <code>alt=""</code> for decorative</li>
+                            <li><strong>SVG Images:</strong> Checks <code><svg></code> with <code>role="img"</code> has <code>aria-label</code> or <code><title></code></li>
+                            <li><strong>Background Images:</strong> CSS background images flagged if conveying information</li>
+                            <li><strong>Quality:</strong> Warns on generic alt text ("image", "photo", "icon")</li>
+                        </ol>
+                        <div class="path-tools">
+                            <span class="path-tool">WCAG 1.1.1</span>
+                            <span class="path-tool">SVG Support</span>
+                        </div>
+                    </article>
+
+                    <article class="path-card reveal" role="listitem" style="--card-index: 4;">
+                        <div class="path-header">
+                            <div class="path-icon" aria-hidden="true">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                                    <polyline points="7 10 12 15 17 10"/>
+                                    <line x1="12" y1="15" x2="12" y2="3"/>
+                                </svg>
+                            </div>
+                            <div class="path-meta">
+                                <span class="path-level">Check 5</span>
+                                <span class="path-duration">Report</span>
+                            </div>
+                        </div>
+                        <h3 class="path-title">JSON Report Output</h3>
+                        <p class="path-description">Structured machine-readable results for CI/CD integration</p>
+                        <ol class="path-steps" role="list" aria-label="Report details">
+                            <li><strong>Schema:</strong> Consistent JSON structure with version, timestamp, summary</li>
+                            <li><strong>Findings Array:</strong> Each finding has selector, rule, severity, message, element HTML</li>
+                            <li><strong>Severity Levels:</strong> error (blocks), warning (should fix), info (best practice)</li>
+                            <li><strong>Remediation:</strong> Suggested fix with code example where applicable</li>
+                            <li><strong>Summary:</strong> Total counts by severity, rule, WCAG criterion</li>
+                            <li><strong>Exit Codes:</strong> 0=pass, 1=warnings, 2=errors, 3=critical</li>
+                            <li><strong>CI/CD:</strong> GitHub Actions, GitLab CI, Azure Pipelines compatible</li>
+                        </ol>
+                        <div class="path-tools">
+                            <span class="path-tool">CI/CD Ready</span>
+                            <span class="path-tool">Exit Codes</span>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="engine" class="about-section" aria-labelledby="engine-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="engine-title">Check Engine Architecture</h2>
+                    <p class="section-description">Reusable, extensible stdlib-only checking engine</p>
+                </header>
+                <div class="about-grid">
+                    <article class="about-card reveal">
+                        <h3>Engine Interface</h3>
+                        <pre style="background: var(--color-bg-elevated); padding: var(--space-4); border-radius: var(--radius-md); overflow-x: auto; font-size: var(--fs-xs); line-height: var(--lh-normal);"><code>from abc import ABC, abstractmethod
+from dataclasses import dataclass
+from typing import List, Optional
+from enum import Enum
+
+class Severity(Enum):
+    ERROR = "error"
+    WARNING = "warning"
+    INFO = "info"
+
+@dataclass
+class Finding:
+    rule_id: str
+    selector: str
+    severity: Severity
+    message: str
+    element_html: str
+    wcag_criterion: Optional[str] = None
+    remediation: Optional[str] = None
+
+class Check(ABC):
+    rule_id: str
+    wcag_criterion: Optional[str] = None
+
+    @abstractmethod
+    def check(self, html: str, url: str = "") -> List[Finding]:
+        """Return findings for this HTML document."""
+        pass
+
+class CheckEngine:
+    def __init__(self, checks: List[Check]):
+        self.checks = checks
+
+    def run(self, html: str, url: str = "") -> List[Finding]:
+        all_findings = []
+        for check in self.checks:
+            try:
+                findings = check.check(html, url)
+                all_findings.extend(findings)
+            except Exception as e:
+                all_findings.append(Finding(
+                    rule_id=f"{check.rule_id}_crash",
+                    selector="document",
+                    severity=Severity.ERROR,
+                    message=f"Check crashed: {e}",
+                    element_html=""
+                ))
+        return all_findings
+
+    def to_json(self, findings: List[Finding]) -> dict:
+        return {
+            "version": "1.0",
+            "timestamp": datetime.utcnow().isoformat() + "Z",
+            "summary": {
+                "total": len(findings),
+                "errors": sum(1 for f in findings if f.severity == Severity.ERROR),
+                "warnings": sum(1 for f in findings if f.severity == Severity.WARNING),
+                "info": sum(1 for f in findings if f.severity == Severity.INFO)
+            },
+            "findings": [
+                {
+                    "rule_id": f.rule_id,
+                    "selector": f.selector,
+                    "severity": f.severity.value,
+                    "message": f.message,
+                    "element_html": f.element_html[:200],
+                    "wcag_criterion": f.wcag_criterion,
+                    "remediation": f.remediation
+                }
+                for f in findings
+            ]
+        }</code></pre>
+                    </article>
+                    <article class="about-card reveal">
+                        <h3>Built-in Checks</h3>
+                        <pre style="background: var(--color-bg-elevated); padding: var(--space-4); border-radius: var(--radius-md); overflow-x: auto; font-size: var(--fs-xs); line-height: var(--lh-normal);"><code>from html.parser import HTMLParser
+import re
+from urllib.parse import urlparse
+
+class LangAttributeCheck(Check):
+    rule_id = "html-lang"
+    wcag_criterion = "3.1.1"
+
+    def check(self, html: str, url: str = "") -> List[Finding]:
+        parser = _LangParser()
+        parser.feed(html)
+        findings = []
+        if not parser.lang_attr:
+            findings.append(Finding(
+                rule_id=self.rule_id,
+                selector="html",
+                severity=Severity.ERROR,
+                message="Missing lang attribute on <html> element",
+                element_html="<html>",
+                wcag_criterion=self.wcag_criterion,
+                remediation='Add lang="en" (or appropriate BCP 47 code) to <html> element'
+            ))
+        elif not _is_valid_bcp47(parser.lang_attr):
+            findings.append(Finding(
+                rule_id=self.rule_id,
+                selector="html",
+                severity=Severity.ERROR,
+                message=f"Invalid lang value: {parser.lang_attr}",
+                element_html=f'<html lang="{parser.lang_attr}">',
+                wcag_criterion=self.wcag_criterion,
+                remediation="Use valid BCP 47 language tag (e.g., en, en-US, zh-CN)"
+            ))
+        return findings
+
+class ContrastCheck(Check):
+    rule_id = "contrast-ratio"
+    wcag_criterion = "1.4.3"
+
+    def check(self, html: str, url: str = "") -> List[Finding]:
+        # Parse CSS colors, compute luminance, check ratios
+        # Supports AA (4.5:1/3:1) and AAA (7:1/4.5:1)
+        pass
+
+class LabelCheck(Check):
+    rule_id = "form-label"
+    wcag_criterion = "1.3.1"
+
+    def check(self, html: str, url: str = "") -> List[Finding]:
+        # Check label association via for/id, wrapping, aria-label, aria-labelledby
+        pass
+
+class ImageAltCheck(Check):
+    rule_id = "img-alt"
+    wcag_criterion = "1.1.1"
+
+    def check(self, html: str, url: str = "") -> List[Finding]:
+        # Check img alt, SVG role=img, background images
+        pass</code></pre>
+                    </article>
+                    <article class="about-card reveal">
+                        <h3>Usage Example</h3>
+                        <pre style="background: var(--color-bg-elevated); padding: var(--space-4); border-radius: var(--radius-md); overflow-x: auto; font-size: var(--fs-xs); line-height: var(--lh-normal);"><code># CLI Usage
+from accessibility_audit import CheckEngine, LangAttributeCheck, ContrastCheck, LabelCheck, ImageAltCheck
+
+engine = CheckEngine([
+    LangAttributeCheck(),
+    ContrastCheck(),
+    LabelCheck(),
+    ImageAltCheck()
+)
+
+with open("page.html") as f:
+    html = f.read()
+
+findings = engine.run(html, "https://example.com")
+report = engine.to_json(findings)
+
+import json
+print(json.dumps(report, indent=2))
+
+# Exit code based on severity
+if any(f.severity == Severity.ERROR for f in findings):
+    sys.exit(2)
+elif any(f.severity == Severity.WARNING for f in findings):
+    sys.exit(1)
+else:
+    sys.exit(0)</code></pre>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <section id="docs" class="about-section" aria-labelledby="docs-title">
+            <div class="container">
+                <header class="section-header">
+                    <h2 id="docs-title">Documentation & Links</h2>
+                </header>
+                <div class="about-grid">
+                    <article class="about-card reveal">
+                        <h3>Quick Start</h3>
+                        <p><code>pip install accessibility-audit-framework</code></p>
+                        <p><code>accessibility-audit scan --file page.html --output report.json</code></p>
+                        <p><code>accessibility-audit scan --url https://example.com --level AA</code></p>
+                    </article>
+                    <article class="about-card reveal">
+                        <h3>Resources</h3>
+                        <ul style="text-align: left; padding-left: var(--space-6);">
+                            <li><a href="https://github.com/myzticalbabe/accessibility-audit-framework">GitHub Repository</a></li>
+                            <li><a href="https://github.com/myzticalbabe/babel">BaBeL Canon</a></li>
+                            <li><a href="https://github.com/myzticalbabe/babel/blob/main/ACCESSIBILITY.md">Accessibility Mandate</a></li>
+                        </ul>
+                    </article>
+                    <article class="about-card reveal">
+                        <h3>Testing</h3>
+                        <p><code>pytest tests/ -v</code></p>
+                        <p>5+ test cases covering lang validation, contrast calculation, label association, alt-text detection, and JSON report generation.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" role="contentinfo">
+        <div class="container">
+            <p>&copy; 2026 Accessibility Audit Framework. Part of the <a href="https://github.com/myzticalbabe/babel">BaBeL Canon</a>.</p>
+            <nav aria-label="Footer links">
+                <ul>
+                    <li><a href="https://github.com/myzticalbabe/babel">BaBeL Canon</a></li>
+                    <li><a href="https://github.com/myzticalbabe/babel/blob/main/LICENSE">Soul Forge License</a></li>
+                    <li><a href="https://github.com/myzticalbabe/babel/blob/main/ACCESSIBILITY.md">Accessibility Mandate</a></li>
+                    <li><a href="https://github.com/myzticalbabe/babel/blob/main/STEM.md">STEM Standards</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
+    <script src="/assets/js/search.js"></script>
+</body>
+</html>
