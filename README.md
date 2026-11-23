@@ -13,3 +13,5 @@ python -m a11y.cli <file.html> [--json]
 ```bash
 pytest
 ```
+
+SOUL LICENCE ONLY — see `LICENSE` (`LicenseRef-SoulForge-1.0`).
